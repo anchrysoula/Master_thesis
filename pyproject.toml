@@ -1,8 +1,6 @@
-
-
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core"]
 
 [tool.mypy]
 disallow_incomplete_defs = true
@@ -29,15 +27,14 @@ override_SS05 = [
 ]
 
 [tool.poetry]
-authors = ["anchrysoula <math1p0014@math.uoc.gr>"]
+authors = ["G. Arampatzis <georgios.arampatzis@uoc.gr>"]
 description = ""
-name = "master-thesis"
+name = "Master-thesis"
 packages = [
-  {include = "master-thesis"}
+  {include = "Master_thesis"}
 ]
 readme = "README.md"
 version = "0.1.0"
-
 
 [tool.poetry.dependencies]
 numpy = "v1.26.4"
@@ -46,14 +43,15 @@ pretty-errors = "^1.2.25"
 python = "^3.10"
 torch = "2.2.2"
 wandb = "^0.18.3"
+ipykernel = "^7.0.1"
+matplotlib = "^3.10.7"
 
 [tool.poetry.group.dev.dependencies]
 bpython = "^0.24"
 mypy = "^1.12.0"
+pytest = "^8.3.3"
 pre-commit = "^4.3.0"
 pretty-errors = "^1.2.25"
-pytest = "^8.3.3"
-sphinx = "^8.1.3"
 
 [tool.poetry.group.docs.dependencies]
 myst-parser = "^4.0.1"
