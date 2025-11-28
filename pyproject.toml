@@ -1,5 +1,5 @@
 [project]
-name = "deep-gp"
+name = "deep_gp"
 version = "0.1.0"
 description = ""
 authors = [
@@ -11,9 +11,10 @@ dependencies = [
     "numpy (>=2.3.5,<3.0.0)",
     "ipykernel (>=7.1.0,<8.0.0)",
     "gpytorch (>=1.14.2,<2.0.0)",
-    "matplotlib (>=3.10.7,<4.0.0)"
+    "matplotlib (>=3.10.7,<4.0.0)",
+    "tqdm (>=4.67.1,<5.0.0)"
 ]
-
+packages = [{include = "deep_GP"}]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
