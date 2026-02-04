@@ -21,7 +21,9 @@ dependencies = [
     "pandas (>=2.3.3,<3.0.0)",
     "seaborn (>=0.13.2,<0.14.0)",
     "imblearn (>=0.0,<0.1)",
-    "xgboost (>=3.1.2,<4.0.0)"
+    "xgboost (>=3.1.2,<4.0.0)",
+    "pycore (>=17.4.17,<18.0.0)",
+    "lime (>=0.2.0.1,<0.3.0.0)"
 ]
 packages = [{include = "deep_GP"}]
 
