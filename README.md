@@ -18,8 +18,7 @@ The project presents an experimental analysis of multiple uncertainty quantifica
 
 The MRI prostate dataset is derived from the study:
 
-> *Artificial intelligence and radiologists in prostate cancer detection on MRI (PI-CAI): an international, paired, non-inferiority, confirmatory study* 
-> Anindo Saha et al.
+> *Artificial intelligence and radiologists in prostate cancer detection on MRI (PI-CAI): an international, paired, non-inferiority, confirmatory study*, Anindo Saha et al.
 > https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(24)00220-1/fulltext
 
 The main objective of this work is to **identify models that achieve low predictive uncertainty** while accurately predicting **ISUP grade groups**.
@@ -63,7 +62,7 @@ https://docs.gpytorch.ai/en/stable/
 4. **GPtorch_example folder**
     - A tutorial for GP regression form the GPyTorch documentation.
 
-5. The notebooks numbered from **00 to 04** contain the **core implementation and experimental code** used in this project. These notebooks include the main modeling pipelines, training procedures and evaluation workflows.
+5. The notebooks numbered from **00 to 04** contain the **core implementation and experimental code** used in this project. These notebooks include the main modeling pipelines, training procedures and evaluation workflows:
     - **00** – Linear regression  
     - **01** – Deep Kernel Learning  
     - **02** – Classification models  
