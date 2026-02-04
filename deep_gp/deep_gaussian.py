@@ -8,6 +8,10 @@ from gpytorch.distributions import MultivariateNormal
 from gpytorch.models.deep_gps import DeepGP
 from gpytorch.likelihoods import GaussianLikelihood
 
+
+# Parts of the code were adapted and modified from the GPyTorch documentation: 
+# https://docs.gpytorch.ai/en/stable/
+
 # This class builds a single deep GP layer.
 
 class DeepGPHiddenLayer(DeepGPLayer):
@@ -52,7 +56,6 @@ class DeepGPHiddenLayer(DeepGPLayer):
         mean_x = self.mean_module(x)
         covar_x = self.covar_module(x)
         return MultivariateNormal(mean_x, covar_x)
-
 
 
 

@@ -1,9 +1,8 @@
 import torch
 import gpytorch
 
-#Parts of the code were adapted and modified from the GPyTorch documentation: 
-#https://docs.gpytorch.ai/en/stable/examples/06_PyTorch_NN_Integration_DKL/KISSGP_Deep_Kernel_Regression_CUDA.html
-
+# Parts of the code were adapted and modified from the GPyTorch documentation: 
+# https://docs.gpytorch.ai/en/stable/
 def get_activation(name):
     if name == "relu":
         return torch.nn.ReLU()

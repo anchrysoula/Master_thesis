@@ -1,4 +1,6 @@
-# Coding for master thesis
+# Code for Master Thesis 
+## Master’s Program: Data Analysis & Machine–Statistical Learning 
+### University of Crete (UOC) & Foundation for Research & Technology Hellas (FORTH)
 
 ## Overview
 
@@ -35,14 +37,31 @@ The repository includes:
 The project relies on common scientific Python and deep learning libraries, including:
 
 - NumPy  
-- SciPy  
-- Matplotlib  
+- Pandas
 - PyTorch  
 - GPytorch  
-- Scikit-learn  
+- Scikit-learn 
+- Seaborn
+- Matplotlib  
+ 
 
 Parts of the code are adapted and modified from the official **GPyTorch documentation**:  
 https://docs.gpytorch.ai/en/stable/
+
+---
+
+### Data preprocessing
+About data loading and merging:
+- Radiomic features and clinical labels are merged using `study_id`, producing a unified dataset containing predictors and ISUP grades.
+
+Class‑0 Undersampling via Nearest Neighbors
+- To reduce the dominance of ISUP class 0, each minority‑class sample (1–5) is paired with its nearest class‑0 neighbor.  
+Only these selected class‑0 samples are retained, producing a more balanced dataset before oversampling.
+
+SMOTE 
+- SMOTE is applied **only** to classes 3, 4, and 5, increasing each to 150 samples while leaving classes 0–2 unchanged.  
+
+
 
 ---
 ### Notebooks: 

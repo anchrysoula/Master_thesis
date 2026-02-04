@@ -1,5 +1,8 @@
-
 import gpytorch
+
+# Parts of the code were adapted and modified from the GPyTorch documentation: 
+# https://docs.gpytorch.ai/en/stable/
+
 
 # We will use the simplest form of GP model, exact inference
 
