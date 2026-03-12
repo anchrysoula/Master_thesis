@@ -33,51 +33,58 @@ def load_data(features_path='../../features.csv', targets_path='../../targets.cs
 
 # Undersample class 0 using nearest neighbors
 
-def undersample_class0(data):
+def undersample_class0(X, y, n_neighbors=3):
     """
     Undersample class 0 by finding the nearest neighbors to class 0 samples
     for each sample in classes 1–5.
 
     Parameters
     ----------
-    data : pandas.DataFrame
-        Dataframe containing the features and targets data.
+    X : pandas.DataFrame
+        Feature matrix (no ID or label columns).
+    y : pandas.Series
+        ISUP grade labels (0–5).
+    n_neighbors : int, default=3
+        Number of nearest class-0 neighbors to select per minority sample.
 
     Returns
     -------
-    df_new : pandas.DataFrame
-        Dataframe containing the undersampled class 0 data.
+    X_new : pandas.DataFrame
+        Resampled feature matrix.
+    y_new : pandas.Series
+        Resampled labels, aligned with X_new.
     """
-    X = data.drop(['study_id', 'patient_id', 'case_ISUP'], axis=1)
-    y = data['case_ISUP']
+    idx_class0 = y.index[y == 0]
 
-    df = X.copy()
-    df["case_ISUP"] = y
+    if len(idx_class0) == 0:
+        return X.reset_index(drop=True), y.reset_index(drop=True)
 
-    idx_class0 = df.index[df["case_ISUP"] == 0]
+    # Fit KNN once on class-0 samples (capped to available samples)
+    k = min(n_neighbors, len(idx_class0))
+    knn = NearestNeighbors(n_neighbors=k)
+    knn.fit(X.loc[idx_class0])
 
     selected_class0 = []
 
     # For each class 1–5, find nearest class-0 samples
     for cls in range(1, 6):
-        idx_cls = df.index[df["case_ISUP"] == cls]
+        idx_cls = y.index[y == cls]
 
-        knn = NearestNeighbors(n_neighbors=3)
-        knn.fit(df.loc[idx_class0, X.columns])
+        if len(idx_cls) == 0:
+            continue
 
-        _, indices = knn.kneighbors(df.loc[idx_cls, X.columns])
-        nearest_idx0 = idx_class0[indices.flatten()]
+        _, indices = knn.kneighbors(X.loc[idx_cls])
+        nearest_idx0 = idx_class0[indices.flatten()].tolist()
 
         selected_class0.extend(nearest_idx0)
 
     selected_class0 = list(set(selected_class0))
 
-    df_new = pd.concat([
-        df[df["case_ISUP"] != 0],   # keep all minority classes
-        df.loc[selected_class0]     # keep selected class-0 samples
-    ])
+    keep_idx = y.index[y != 0].tolist() + selected_class0
+    X_new = X.loc[keep_idx].reset_index(drop=True)
+    y_new = y.loc[keep_idx].reset_index(drop=True)
 
-    return df_new
+    return X_new, y_new
 
 
 

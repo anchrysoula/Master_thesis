@@ -22,10 +22,18 @@ dependencies = [
     "seaborn (>=0.13.2,<0.14.0)",
     "imblearn (>=0.0,<0.1)",
     "xgboost (>=3.1.2,<4.0.0)",
+    "lightgbm (>=4.0.0,<5.0.0)",
+    "catboost (>=1.2.0,<2.0.0)",
     "pycore (>=17.4.17,<18.0.0)",
-    "lime (>=0.2.0.1,<0.3.0.0)"
+    "lime (>=0.2.0.1,<0.3.0.0)",
+    "optuna (>=4.7.0,<5.0.0)",
+    "optuna-integration (>=4.7.0,<5.0.0)",
+    "rich (>=14.3.3,<15.0.0)",
+    "ipywidgets (>=8.1.8,<9.0.0)",
+    "jupyter (>=1.1.1,<2.0.0)"
 ]
-packages = [{include = "deep_GP"}]
+[tool.poetry]
+packages = [{include = "deep_gp"}]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
