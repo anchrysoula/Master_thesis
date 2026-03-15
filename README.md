@@ -65,23 +65,20 @@ https://docs.gpytorch.ai/en/stable/
 ---
 
 ### Data Preprocessing
-
-In all notebooks except **05-new_approach.ipynb**, radiomic features and clinical labels are merged using `study_id`, producing a unified dataset containing predictors and ISUP grades.
-
 The following preprocessing pipeline is used in the Exact Gaussian Process Regression, Deep Gaussian Processes, and the Binary Classification scheme (ISUP grades 0–5):
 
-#### **Class‑0 Undersampling via Nearest Neighbors**
+#### Class‑0 Undersampling via Nearest Neighbors
 To reduce the dominance of ISUP class 0, each minority‑class sample (ISUP 1–5) is paired with its nearest class‑0 neighbor.  
 Only these selected class‑0 samples are retained, producing a more balanced dataset before oversampling.
 
-#### **SMOTE Oversampling**
+#### SMOTE Oversampling
 SMOTE is applied **only** to ISUP classes 3, 4, and 5, increasing each to 150 samples while leaving classes 0–2 unchanged.
 
 After undersampling and oversampling, a train–test split is applied to this final dataset before model training.
 
 ---
 
-### **New Classification Approach (05-new_approach.ipynb)**
+### New Classification Approach (05-new_approach.ipynb)
 
 A new preprocessing strategy is introduced in the notebook **05-new_approach.ipynb**:
 
